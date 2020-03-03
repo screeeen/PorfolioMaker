@@ -167,8 +167,8 @@ hr {
   flex-flow: column nowrap;
 }
 
-.flex-column > p {
-  padding: 0 24px 0 0;
+.flex-column > .project-info > p {
+  padding: 0 20px 0 0;
 }
 
 .project-info {

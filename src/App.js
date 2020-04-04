@@ -1,18 +1,38 @@
 import React from 'react';
-// import Menu from './components/Menu';
-import EmergencyHeroes from './components/EmergencyHeroes';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
 import Survey from './components/Survey';
-// import Project from './components/Project';
 import './App.css'
-// import EHDraft from './images/games_images/map2_copy-min.png'
-// import EHCasinoIsometric from './images/games_images/casino_isometric-min.jpg'
+import MockUp from './components/MockUp';
 
 function App() {
   return (
     <div>
-      {/* <EmergencyHeroes /> */}
-      <Survey />
-      </div>
+      <Router>
+        <nav>
+          <ul>
+      <h6>Automatic Porfolio</h6>
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/survey">Survey</Link>
+            </li>
+            <li>
+              <Link to="/mockup">Mock Up</Link>
+            </li>
+          </ul>
+        </nav>
+        <Switch>
+          <Route exact path="/survey" component={Survey} />
+          <Route exact path="/mockup" component={MockUp} />
+        </Switch>
+      </Router>
+    </div>
   );
 }
 

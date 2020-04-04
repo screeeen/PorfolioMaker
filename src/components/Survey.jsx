@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
-import MockUp from './MockUp'
+import {
+  Link
+} from "react-router-dom";
+
 class Survey extends Component {
   constructor(props) {
     super(props);
@@ -7,7 +10,8 @@ class Survey extends Component {
       name: '',
       professions: '',
       description: '',
-      fruits: ''
+      fruits: '',
+      projects: {},
     };
 
     this.handleChange = this.handleChange.bind(this);
@@ -24,64 +28,61 @@ class Survey extends Component {
   }
 
   handleSubmit(event) {
-    const jjj = JSON.stringify(this.state)
-    alert('A name was submitted: ' + jjj);
     event.preventDefault();
+    const info = JSON.stringify(this.state)
+    alert('A name was submitted: ' + info);
+
   }
+
+  // createProject = () => {
+  //   // this.state({...this.state.projects,project1})
+  // }
 
   render() {
     return (
-      <div>
-        <h1>Hello write your stuff</h1>
-        <h1>Part 1</h1>
-        <h2>Write here your personal details!</h2>
+      <div className="container-survey">
+        <h3>Part 1</h3>
+        <h3>Write here your personal details!</h3>
         <form onSubmit={this.handleSubmit}>
           <label>
-            Name:
-          <input type="text" name='name' value={this.state.value} onChange={this.handleChange} />
+            <p>Name:</p>
+            <input type="text" name='name' value={this.state.value} onChange={this.handleChange} />
           </label>
-          <input type="submit" value="Submit" />
-        </form>
-
-        <form onSubmit={this.handleSubmit}>
-        <label>
-          Your Best Photo:
-          <input type="file" ref={this.fileInput} />
-        </label>
-        <br />
-        <button type="submit">Submit</button>
-      </form>
-
-        <form onSubmit={this.handleSubmit}>
+          <br />
           <label>
-            What do you do?
-          <input type="text" name='professions' value={this.state.value} onChange={this.handleChange} />
+            <p>Your Best Photo:</p>
+            <input type="file" ref={this.fileInput} />
           </label>
-          <input type="submit" value="Submit" />
-        </form>
-
-        <form onSubmit={this.handleSubmit}>
+          <br />
           <label>
-            Description:
-          <textarea name='description' value={this.state.value} onChange={this.handleChange} />
+            <p>What do you do?</p>
+            <input type="text" name='professions' value={this.state.value} onChange={this.handleChange} />
           </label>
-          <input type="submit" value="Submit" />
-        </form>
-
-        <form onSubmit={this.handleSubmit}>
+          <br />
           <label>
-            Pick your favorite flavor:
-          <select value={this.state.value} name='fruits' onChange={this.handleChange}>
+            <p>Description:</p>
+            <textarea name='description' value={this.state.value} onChange={this.handleChange} />
+          </label>
+          <br />
+          <label>
+            <p>Pick your favorite flavor:</p>
+            <select value={this.state.value} name='fruits' onChange={this.handleChange}>
               <option value="grapefruit">Grapefruit</option>
               <option value="lime">Lime</option>
               <option value="coconut">Coconut</option>
               <option value="mango">Mango</option>
             </select>
           </label>
-          <input type="submit" value="Submit" />
+          <p>-----------------------------------◊◊◊-------------------------------</p>
+          <Link
+            to={{
+              pathname: "/mockup",
+              state: { part1: this.state }
+            }}
+          >
+          
+           <input type="submit" value="Submit" /> </Link>
         </form>
-        <MockUp details={this.state}/>
-
       </div>
     )
   }

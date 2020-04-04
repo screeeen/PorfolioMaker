@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useEffect } from 'react'
+import { useLocation } from 'react-router-dom';
+
 import './style.css'
 import Title from './Title'
 import Info from './Info'
@@ -9,8 +11,15 @@ import VideoClip from './VideoClip'
 
 
 function Project(props) {
+  const location = useLocation();
+  useEffect(() => {
+    // const info = location.state;
+  }, [location]);
+
+
     return (
     <div className="c1">
+      <p>hola, aqui project</p>
       <section id={props.idTitle}>
       <Title title={props.title}/>
       <hr></hr>

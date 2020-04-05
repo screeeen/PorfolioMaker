@@ -14,6 +14,8 @@ class Survey extends Component {
       projects: {},
     };
 
+    console.log('props in survey',props);
+    
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
@@ -29,20 +31,20 @@ class Survey extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    const info = JSON.stringify(this.state)
-    alert('A name was submitted: ' + info);
+    // const info = JSON.stringify(this.state)
+    console.log(this.props, this.state);
+    
+    this.props.populateState(this.state);
+    // alert('A name was submitted: ' + info);
 
   }
-
-  // createProject = () => {
-  //   // this.state({...this.state.projects,project1})
-  // }
 
   render() {
     return (
       <div className="container-survey">
         <h3>Part 1</h3>
         <h3>Write here your personal details!</h3>
+        
         <form onSubmit={this.handleSubmit}>
           <label>
             <p>Name:</p>
@@ -74,14 +76,14 @@ class Survey extends Component {
             </select>
           </label>
           <p>-----------------------------------◊◊◊-------------------------------</p>
-          <Link
+          {/* <Link
             to={{
-              pathname: "/mockup",
+              pathname: "/",
               state: { part1: this.state }
             }}
-          >
-          
-           <input type="submit" value="Submit" /> </Link>
+          > */}
+           <input type="submit" value="Submit" />
+            {/* </Link> */}
         </form>
       </div>
     )

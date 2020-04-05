@@ -1,18 +1,19 @@
-import React, { useEffect } from 'react'
+import React, { useEffect,useState } from 'react'
 import { useLocation } from 'react-router-dom';
 
 function MockUp() {
-  
+    const [part1, setPart1] = useState(0);
+
   const location = useLocation();
   useEffect(() => {
-    const info = location.state;
-    console.log(info,'hey',location);    
-  }, [location]);
+    location.state && setPart1(location.state.part1);
+    console.log('hey',part1);    
+  }, []);
 
 
   return (
     <div className="mock-up-container">
-      <h3>hola mockup</h3>
+      <h5>mockup</h5>
       {location.state && 
       <div>
       <p>{location.state.part1.name}</p>

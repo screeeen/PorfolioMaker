@@ -14,11 +14,29 @@ class Survey extends Component {
       projects: {},
     };
 
-    console.log('props in survey',props);
-    
+
+    console.log('props in survey', props);
+
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
+
+  componentDidMount = () => {
+    console.log(this.props.data);
+
+    const { name, professions, descriptions, fruits, projects } = this.props.data;
+    console.log(name, professions);
+
+    this.setState({
+      name,
+      professions,
+      fruits
+    });
+
+    console.log('survey', this.state);
+  }
+
+
 
   handleChange(event) {
     const target = event.target;
@@ -32,11 +50,10 @@ class Survey extends Component {
   handleSubmit(event) {
     event.preventDefault();
     // const info = JSON.stringify(this.state)
-    console.log(this.props, this.state);
-    
-    this.props.populateState(this.state);
     // alert('A name was submitted: ' + info);
+    console.log('state form', this.state);
 
+    this.props.populateState(this.state);
   }
 
   render() {
@@ -44,7 +61,7 @@ class Survey extends Component {
       <div className="container-survey">
         <h3>Part 1</h3>
         <h3>Write here your personal details!</h3>
-        
+
         <form onSubmit={this.handleSubmit}>
           <label>
             <p>Name:</p>
@@ -82,8 +99,8 @@ class Survey extends Component {
               state: { part1: this.state }
             }}
           > */}
-           <input type="submit" value="Submit" />
-            {/* </Link> */}
+          {/* </Link> */}
+          <input type="submit" value="Submit" />
         </form>
       </div>
     )

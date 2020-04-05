@@ -1,12 +1,10 @@
 import React, { useEffect,useState } from 'react'
-import { useLocation } from 'react-router-dom';
 
-function MockUp() {
+function MockUp(props) {
     const [part1, setPart1] = useState(0);
 
-  const location = useLocation();
   useEffect(() => {
-    location.state && setPart1(location.state.part1);
+    setPart1(props.data);
     console.log('hey',part1);    
   }, []);
 
@@ -14,12 +12,12 @@ function MockUp() {
   return (
     <div className="mock-up-container">
       <h5>mockup</h5>
-      {location.state && 
+      {part1 && 
       <div>
-      <p>{location.state.part1.name}</p>
-      <p>{location.state.part1.professions}</p>
-      <p>{location.state.part1.description}</p>
-      <p>{location.state.part1.fruits}</p>
+      <p>{part1.name}</p>
+      <p>{part1.professions}</p>
+      <p>{part1.description}</p>
+      <p>{part1.fruits}</p>
       </div>}
     </div>
   );

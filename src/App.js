@@ -24,16 +24,15 @@ class App extends Component {
     console.log('my state', this.state);
   }
 
-  componentDidMount() {
-    // this.populateState();
-  }
-
   populateState = (data) => {
     console.log('hola popu -');
     // const value = data.type === 'checkbox' ? data.checked : data.value;
     // const name = data.name;
+     const {name, professions,fruits} = data;
     this.setState({
-      data
+      name,
+      professions,
+      fruits
     });
   }
 
@@ -57,8 +56,8 @@ class App extends Component {
             </ul>
           </nav>
           <Switch>
-            <Route exact path="/survey" component={() => <Survey populateState ={this.populateState} />} />
-            <Route exact path="/mockup" component={MockUp} />
+            <Route exact path="/survey" component={() => <Survey populateState ={this.populateState} data={this.state} />} />
+            <Route exact path="/mockup" component={() => <MockUp populateState ={this.populateState} data={this.state} />} />
           </Switch>
           {/* <Redirect to="/survey" /> */}
         </Router>

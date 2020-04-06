@@ -21,6 +21,16 @@ class Survey extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+  componentDidMount = () => {
+    console.log(this.props);
+    const { name, professions, description, fruits } = this.props.data.profile
+    return this.setState({
+      name,
+      professions,
+      description,
+      fruits
+    })
+  }
 
   handleChange(event) {
     const target = event.target;
@@ -76,19 +86,19 @@ class Survey extends Component {
               </label>
               <br />
               <br />
-          <p>------------◊◊◊--------------</p>
-              <input type="submit" value="Done with the profile" />
+              <p>------------◊◊◊--------------</p>
+              <input type="submit" value="Done with the profile part" />
             </form>
           </div>
-          <div className="container-survey">
-            <p>mockup</p>
-            <hr></hr>
-            <p>{this.state.name}</p>
-            <p>{this.state.professions}</p>
-            <p>{this.state.description}</p>
-            <p>{this.state.fruits}</p>
+            <div className="container-survey">
+              <p>mockup</p>
+              <hr></hr>
+              <section id={this.state.idTitle}>
+              <p>{this.state.name}</p>
+              <p>{this.state.professions}</p>
+              <p>{this.state.description}</p>
+              <p>{this.state.fruits}</p>
 
-            <section id={this.state.idTitle}>
               <Title title={this.state.title} />
               <Picture picture={this.state.picture} />
               <Info projectInfo={this.state.text} />
@@ -105,9 +115,9 @@ class Survey extends Component {
 
               <VideoClip videoURL={this.state.clip2} />
             </section>
+            </div>
           </div>
         </div>
-      </div>
     )
   }
 }

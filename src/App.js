@@ -58,36 +58,33 @@ class App extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container-survey">
         <Router>
-
           <nav>
             <ul>
-              {/* <div className="container"> */}
                 <p>Welcome to the automatic porfolio. Prepare your pictures, files and texts, fill the forms and voilá.</p>
-              {/* </div> */}
-              <li>
-                <Link to="/">Home</Link>
-              </li>
-              <li>
-                <Link to="/survey">Profile</Link>
-              </li>
-              <li>
-                <Link to="/project">Project</Link>
-              </li>
-              <li>
-                <Link to="/mockup">Preview</Link>
-              </li>
+                {/* </div> */}
+                <li>
+                  <Link to="/">Home</Link>
+                </li>
+                <li>
+                  <Link to="/survey">Profile</Link>
+                </li>
+                <li>
+                  <Link to="/project">Project</Link>
+                </li>
+                <li>
+                  <Link to="/mockup">Preview</Link>
+                </li>
             </ul>
           </nav>
-          <Switch>
-            <Route exact path="/survey" component={() => <Survey populateState={this.populateState} data={this.state} />} />
-            <Route exact path="/project" component={() => <ProjectSurvey addProject={this.addProject} data={this.state} />} />
-            <Route exact path="/mockup" component={() => <MockUp populateState={this.populateState} data={this.state} />} />
-          </Switch>
-          {/* <Redirect to="/survey" /> */}
+            <Switch>
+              <Route exact path="/survey" component={() => <Survey populateState={this.populateState} data={this.state} />} />
+              <Route exact path="/project" component={() => <ProjectSurvey addProject={this.addProject} data={this.state} />} />
+              <Route exact path="/mockup" component={() => <MockUp populateState={this.populateState} data={this.state} />} />
+            </Switch>
+            {/* <Redirect to="/survey" /> */}
         </Router>
-
       </div>
     );
   }

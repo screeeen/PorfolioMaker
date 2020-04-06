@@ -5,7 +5,6 @@ import Info from './Info'
 
  function Capsule(props) {
    const twoCol = props.halfColumn;
-   console.log('twocol', props.halfColumn)
   return (
     <>
     {twoCol ? (<div className="two-col">

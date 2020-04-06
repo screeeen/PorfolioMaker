@@ -8,7 +8,7 @@ import {
 
 import Survey from './components/Survey';
 import MockUp from './components/MockUp';
-import Project from './components/Project';
+import ProjectSurvey from './components/ProjectSurvey';
 import './App.css'
 
 class App extends Component {
@@ -39,6 +39,25 @@ class App extends Component {
     });
   }
 
+  addProject = (data) => {
+    
+    console.log(data);
+    
+    
+    this.setState(state => {
+      const projectTemplate = {
+        projectName:"",
+        subtitle:"",
+        challengeDescription:""
+      }
+      const projects = [...state.projects, projectTemplate];
+      console.log(...state.projects);
+      console.log(state.value);
+      return {
+        projects,
+      };
+    });
+  };
 
   render() {
     return (
@@ -59,12 +78,18 @@ class App extends Component {
               <li>
                 <Link to="/project">Project</Link>
               </li>
+              <li>
+                <button onClick={this.addProject}>
+                  <p>create new project</p>
+                </button>                </li>
+
+
             </ul>
           </nav>
           <Switch>
             <Route exact path="/survey" component={() => <Survey populateState={this.populateState} data={this.state} />} />
             <Route exact path="/mockup" component={() => <MockUp populateState={this.populateState} data={this.state} />} />
-            <Route exact path="/project" component={() => <Project populateState={this.populateState} data={this.state} />} />
+            <Route exact path="/project" component={() => <ProjectSurvey addProject={this.addProject} data={this.state} />} />
           </Switch>
           {/* <Redirect to="/survey" /> */}
         </Router>

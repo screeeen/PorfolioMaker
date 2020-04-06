@@ -8,26 +8,13 @@ class Survey extends Component {
         name: '',
         professions: '',
         description: '',
-        fruits: ''
+        fruits: '',
     };
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  // componentDidMount = () => {
-  //   if (this.props.data.profile !== undefined){
-  //     const { profile } = this.props.data;
-  //     const { name, description,professions,fruits } = profile;
-  
-  //     this.setState({
-  //         name,
-  //         description,
-  //         professions,
-  //         fruits
-  //     });
-  //   }
-  // }
 
   handleChange(event) {
     const target = event.target;
@@ -44,6 +31,7 @@ class Survey extends Component {
     // alert('A name was submitted: ' + info);
     this.props.populateState(this.state);
   }
+
 
   render() {
     return (
@@ -82,19 +70,12 @@ class Survey extends Component {
               <option value="mango">Mango</option>
             </select>
           </label>
-          <p>-----------------------------------◊◊◊-------------------------------</p>
-          {/* <Link
-            to={{
-              pathname: "/",
-              state: { part1: this.state }
-            }}
-          > */}
-          {/* </Link> */}
           <input type="submit" value="Submit" />
         </form>
+          <p>------------◊◊◊--------------</p>
 
+      <p>------------◊◊◊--------------</p>
 
-        {/* <MockUp /> */}
       </div>
     )
   }

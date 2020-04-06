@@ -20,13 +20,14 @@ function MockUp(props) {
   return (
     <div className="container-survey">
     <hr></hr>
-      <p>mockup</p>
+      <p>preview</p>
       {data && 
       <div>
       <p>{data.profile.name}</p>
       <p>{data.profile.professions}</p>
       <p>{data.profile.description}</p>
       <p>{data.profile.fruits}</p>
+
       <section id={data.idTitle}>
       <Title title={data.title}/>
       <Picture picture={data.picture} />

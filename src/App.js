@@ -40,19 +40,16 @@ class App extends Component {
   }
 
   addProject = (data) => {
-    
-    console.log(data);
-    
-    
     this.setState(state => {
+      const { projectName, subtitle, challengeDescription } = data;
       const projectTemplate = {
-        projectName:"",
-        subtitle:"",
-        challengeDescription:""
+        projectName,
+        subtitle,
+        challengeDescription
       }
       const projects = [...state.projects, projectTemplate];
       console.log(...state.projects);
-      console.log(state.value);
+      console.log(this.state);
       return {
         projects,
       };
@@ -63,36 +60,34 @@ class App extends Component {
     return (
       <div>
         <Router>
+
           <nav>
             <ul>
-              <h6>Automatic Porfolio</h6>
+              {/* <div className="container"> */}
+                <p>Welcome to the automatic porfolio. Prepare your pictures, files and texts, fill the forms and voilá.</p>
+              {/* </div> */}
               <li>
                 <Link to="/">Home</Link>
               </li>
               <li>
-                <Link to="/survey">Survey</Link>
-              </li>
-              <li>
-                <Link to="/mockup">Mock Up</Link>
+                <Link to="/survey">Profile</Link>
               </li>
               <li>
                 <Link to="/project">Project</Link>
               </li>
               <li>
-                <button onClick={this.addProject}>
-                  <p>create new project</p>
-                </button>                </li>
-
-
+                <Link to="/mockup">Preview</Link>
+              </li>
             </ul>
           </nav>
           <Switch>
             <Route exact path="/survey" component={() => <Survey populateState={this.populateState} data={this.state} />} />
-            <Route exact path="/mockup" component={() => <MockUp populateState={this.populateState} data={this.state} />} />
             <Route exact path="/project" component={() => <ProjectSurvey addProject={this.addProject} data={this.state} />} />
+            <Route exact path="/mockup" component={() => <MockUp populateState={this.populateState} data={this.state} />} />
           </Switch>
           {/* <Redirect to="/survey" /> */}
         </Router>
+
       </div>
     );
   }

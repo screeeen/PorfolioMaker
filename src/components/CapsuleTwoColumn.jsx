@@ -2,7 +2,7 @@ import React from 'react'
 import './style.css'
 import Subtitle from './Subtitle'
 import Info from './Info'
-import Capsule from './Capsule'
+// import Capsule from './Capsule'
 
  function CapsuleTwoColumn(props) {
   return (

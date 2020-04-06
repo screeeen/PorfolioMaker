@@ -1,49 +1,40 @@
 import React, { Component } from 'react'
-import {
-  Link
-} from "react-router-dom";
+import './style.css'
 
 class Survey extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      name: '',
-      professions: '',
-      description: '',
-      fruits: '',
-      projects: {},
+        name: '',
+        professions: '',
+        description: '',
+        fruits: ''
     };
-
-
-    console.log('props in survey', props);
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  componentDidMount = () => {
-    console.log(this.props.data);
-
-    const { name, professions, descriptions, fruits, projects } = this.props.data;
-    console.log(name, professions);
-
-    this.setState({
-      name,
-      professions,
-      fruits
-    });
-
-    console.log('survey', this.state);
-  }
-
-
+  // componentDidMount = () => {
+  //   if (this.props.data.profile !== undefined){
+  //     const { profile } = this.props.data;
+  //     const { name, description,professions,fruits } = profile;
+  
+  //     this.setState({
+  //         name,
+  //         description,
+  //         professions,
+  //         fruits
+  //     });
+  //   }
+  // }
 
   handleChange(event) {
     const target = event.target;
     const value = target.type === 'checkbox' ? target.checked : target.value;
     const name = target.name;
     this.setState({
-      [name]: value
+        [name]: value
     });
   }
 
@@ -51,16 +42,15 @@ class Survey extends Component {
     event.preventDefault();
     // const info = JSON.stringify(this.state)
     // alert('A name was submitted: ' + info);
-    console.log('state form', this.state);
-
     this.props.populateState(this.state);
   }
 
   render() {
     return (
       <div className="container-survey">
-        <h3>Part 1</h3>
-        <h3>Write here your personal details!</h3>
+      <hr></hr>
+        <p>Part 1</p>
+        <p>Write here your personal details!</p>
 
         <form onSubmit={this.handleSubmit}>
           <label>
@@ -102,6 +92,9 @@ class Survey extends Component {
           {/* </Link> */}
           <input type="submit" value="Submit" />
         </form>
+
+
+        {/* <MockUp /> */}
       </div>
     )
   }

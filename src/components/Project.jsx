@@ -1,5 +1,4 @@
-import React, { useEffect } from 'react'
-import { useLocation } from 'react-router-dom';
+import React, { useEffect,useState } from 'react'
 
 import './style.css'
 import Title from './Title'
@@ -11,32 +10,36 @@ import VideoClip from './VideoClip'
 
 
 function Project(props) {
-  const location = useLocation();
+  const [data, setData] = useState(props.data);
+
   useEffect(() => {
-    // const info = location.state;
-  }, [location]);
+    setData(props.data);
+    console.log(data,'project page data');
+    
+  }, []);
+  
 
 
     return (
-    <div className="c1">
-      <p>hola, aqui project</p>
-      <section id={props.idTitle}>
-      <Title title={props.title}/>
+    <div className="container-survey">
       <hr></hr>
-      <Picture picture={props.picture} />
-      <Info projectInfo={props.text} />
+      <p>Project</p>
+      <section id={data.idTitle}>
+      <Title title={data.title}/>
+      <Picture picture={data.picture} />
+      <Info projectInfo={data.text} />
       
-      <CapsuleTwoColumn subtitle={props.subtitleTarget} text={props.textTarget} subtitle2={props.subtitleScope} text2={props.textScope}/>
-      <Picture picture={props.picture2} />
+      <CapsuleTwoColumn subtitle={data.subtitleTarget} text={data.textTarget} subtitle2={data.subtitleScope} text2={data.textScope}/>
+      <Picture picture={data.picture2} />
 
-      <Capsule subtitle={props.subtitleChallenge} text={props.textChallenge} />
-      <Capsule subtitle={props.subtitleProcess} text={props.textProcess} />
-      <VideoClip videoURL={props.clip1}/>
+      <Capsule subtitle={data.subtitleChallenge} text={data.textChallenge} />
+      <Capsule subtitle={data.subtitleProcess} text={data.textProcess} />
+      <VideoClip videoURL={data.clip1}/>
 
-      <Capsule subtitle={props.subtitleValidation} text={props.textValidation} />
-      <Capsule subtitle={props.subtitleLearnings} text={props.textLearnings} />
+      <Capsule subtitle={data.subtitleValidation} text={data.textValidation} />
+      <Capsule subtitle={data.subtitleLearnings} text={data.textLearnings} />
 
-      <VideoClip videoURL={props.clip2}/>
+      <VideoClip videoURL={data.clip2}/>
       </section>
     </div>
   )

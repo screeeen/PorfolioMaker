@@ -1,23 +1,26 @@
 import React, { useEffect,useState } from 'react'
+import './style.css'
 
 function MockUp(props) {
-    const [part1, setPart1] = useState(0);
+    const [data, setData] = useState(0);
 
   useEffect(() => {
-    setPart1(props.data);
-    console.log('hey',part1);    
+    console.log(props.data);
+    
+    setData(props.data);
   }, []);
 
 
   return (
-    <div className="mock-up-container">
-      <h5>mockup</h5>
-      {part1 && 
+    <div className="container-survey">
+    <hr></hr>
+      <p>mockup</p>
+      {data && 
       <div>
-      <p>{part1.name}</p>
-      <p>{part1.professions}</p>
-      <p>{part1.description}</p>
-      <p>{part1.fruits}</p>
+      <p>{data.profile.name}</p>
+      <p>{data.profile.professions}</p>
+      <p>{data.profile.description}</p>
+      <p>{data.profile.fruits}</p>
       </div>}
     </div>
   );

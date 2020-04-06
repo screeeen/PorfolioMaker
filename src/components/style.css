@@ -33,13 +33,6 @@ monospace;
 }
 
 .container-survey {
-    /* display: -webkit-flex;
-    display: flex;
-    -webkit-flex-flow: row wrap;
-    flex-flow: row wrap;
-    object-fit: contain;
-    box-sizing: border-box; */
-    /* padding: 54px; */
     width: 60%;
     margin: auto;
     font-family: 'IBM Plex Mono';
@@ -48,11 +41,6 @@ monospace;
     font-kerning: none;
     letter-spacing: 1.2px;
     line-height: 1.2em;
-}
-
-.mock-up-container {
-    border: 2px solid black;
-    border-radius: 4px;
 }
 
 span {

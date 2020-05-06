@@ -45,7 +45,7 @@ class Survey extends Component {
     event.preventDefault();
     // const info = JSON.stringify(this.state)
     // alert('A name was submitted: ' + info);
-    this.props.populateState(this.state);
+    this.props.addInfo(this.state);
   }
 
 

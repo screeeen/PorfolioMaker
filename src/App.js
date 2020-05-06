@@ -26,7 +26,7 @@ class App extends Component {
     // console.log('my state', this.state);
   }
 
-  populateState = (data) => {
+  addInfo = (data) => {
     const { name, professions, description, fruits } = data;
     this.setState({
       profile: {
@@ -79,9 +79,9 @@ class App extends Component {
             </ul>
           </nav>
             <Switch>
-              <Route exact path="/survey" component={() => <Survey populateState={this.populateState} data={this.state} />} />
+              <Route exact path="/survey" component={() => <Survey addInfo={this.addInfo} data={this.state} />} />
               <Route exact path="/project" component={() => <ProjectSurvey addProject={this.addProject} data={this.state} />} />
-              <Route exact path="/mockup" component={() => <MockUp populateState={this.populateState} data={this.state} />} />
+              <Route exact path="/mockup" component={() => <MockUp addInfo={this.addInfo} data={this.state} />} />
             </Switch>
             {/* <Redirect to="/survey" /> */}
         </Router>

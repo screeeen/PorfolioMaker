@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
+
 import {
   BrowserRouter as Router,
   Switch,
@@ -11,83 +12,89 @@ import MockUp from './components/MockUp';
 import ProjectSurvey from './components/ProjectSurvey';
 import './App.css'
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      profile: {
-        name: '',
-        professions: '',
-        description: '',
-        fruits: ''
-      },
-      projects: [],
-    };
-    // console.log('my state', this.state);
-  }
+const App = () => {
 
-  addInfo = (data) => {
-    const { name, professions, description, fruits } = data;
-    this.setState({
-      profile: {
-        name,
-        professions,
-        description,
-        fruits
-      },
-      projects: []
-    });
-  }
-
-  addProject = (data) => {
-    this.setState(state => {
-      const { projectName, subtitle, challengeDescription } = data;
-      const projectTemplate = {
-        projectName,
-        subtitle,
-        challengeDescription
-      }
-      const projects = [...state.projects, projectTemplate];
-      console.log(...state.projects);
-      console.log(this.state);
-      return {
-        projects,
-      };
-    });
+  const initialSchema = {
+    profile: {
+      name: '',
+      professions: '',
+      description: '',
+      fruits: ''
+    },
+    projects: []
   };
 
-  render() {
-    return (
-      <div className="container-survey">
-        <Router>
-          <nav>
-            <ul>
-                <p>Welcome to the automatic porfolio. Prepare your pictures, files and texts, fill the forms and voilá.</p>
-                {/* </div> */}
-                <li>
-                  <Link to="/">Home</Link>
-                </li>
-                <li>
-                  <Link to="/survey">Profile</Link>
-                </li>
-                <li>
-                  <Link to="/project">Project</Link>
-                </li>
-                <li>
-                  <Link to="/mockup">Preview</Link>
-                </li>
-            </ul>
-          </nav>
-            <Switch>
-              <Route exact path="/survey" component={() => <Survey addInfo={this.addInfo} data={this.state} />} />
-              <Route exact path="/project" component={() => <ProjectSurvey addProject={this.addProject} data={this.state} />} />
-              <Route exact path="/mockup" component={() => <MockUp addInfo={this.addInfo} data={this.state} />} />
-            </Switch>
-            {/* <Redirect to="/survey" /> */}
-        </Router>
-      </div>
-    );
+  const [data, setData] = useState(window.localStorage.getItem('data') || initialSchema);
+
+
+
+  useEffect(() => {
+    // window.localStorage.getItem('data') && setData(JSON.parse(window.localStorage.getItem('data');
+  })
+
+  const addInfo = data => {
+
+    const { name, professions, description, fruits } = data;
+
+    // setdata({
+    //   profile: {
+    //     name,
+    //     professions,
+    //     description,
+    //     fruits
+    //   },
+    //   projects: []
+    // });
   }
+
+  const addProject = data => {
+    // setdata(data => {
+    //   const { projectName, subtitle, challengeDescription } = data;
+    //   const projectTemplate = {
+    //     projectName,
+    //     subtitle,
+    //     challengeDescription
+    //   }
+    //   const projects = [...data.projects, projectTemplate];
+    //   console.log(...data.projects);
+    //   console.log(data);
+    //   return {
+    //     projects,
+    //   };
+    // });
+  };
+
+  return (
+    <div className="container-survey">
+      <Router>
+        <nav>
+          <ul>
+            <p>Welcome to the automatic porfolio. Prepare your pictures, files and texts, fill the forms and voilá.</p>
+            {/* </div> */}
+            <li>
+              <Link to="/">Home</Link>
+            </li>
+            <li>
+              <Link to="/survey">Profile</Link>
+            </li>
+            <li>
+              <Link to="/project">Project</Link>
+            </li>
+            <li>
+              <Link to="/mockup">Preview</Link>
+            </li>
+          </ul>
+        </nav>
+        <Switch>
+          <Route exact path="/survey" component={() => <Survey addInfo={addInfo} data={data} />} />
+          <Route exact path="/project" component={() => <ProjectSurvey addProject={addProject} data={data} />} />
+          <Route exact path="/mockup" component={() => <MockUp addInfo={addInfo} data={data} />} />
+        </Switch>
+        {/* <Redirect to="/survey" /> */}
+      </Router>
+    </div>
+  );
 }
+
 
 export default App

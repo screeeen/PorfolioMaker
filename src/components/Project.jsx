@@ -9,11 +9,11 @@ import CapsuleTwoColumn from './CapsuleTwoColumn'
 import VideoClip from './VideoClip'
 
 
-function Project(props) {
+const Project = props => {
   const [data, setData] = useState(props.data);
 
   useEffect(() => {
-    setData(props.data);
+    setData(props);
     console.log(data,'project page data');
     
   }, []);

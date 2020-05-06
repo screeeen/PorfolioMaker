@@ -23,7 +23,7 @@ function MockUp(props) {
           <p>{data.profile.professions}</p>
           <p>{data.profile.description}</p>
           <p>my fruit {data.profile.fruits}</p>
-          <ProjectCard data ={data} />
+          <ProjectCard data={data} />
         </>
       }
 

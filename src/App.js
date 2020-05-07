@@ -17,8 +17,9 @@ const App = () => {
   const initialSchema = {
     profile: {
       name: '',
-      professions: '',
+      profession: '',
       description: '',
+      picture: '',
       fruits: ''
     },
     projects: []
@@ -32,19 +33,9 @@ const App = () => {
     // window.localStorage.getItem('data') && setData(JSON.parse(window.localStorage.getItem('data');
   })
 
-  const addInfo = data => {
-
-    const { name, professions, description, fruits } = data;
-
-    // setdata({
-    //   profile: {
-    //     name,
-    //     professions,
-    //     description,
-    //     fruits
-    //   },
-    //   projects: []
-    // });
+  const addInfo = profile => {
+    console.log('add profi', profile);
+    setData({ ...data, profile });
   }
 
   const addProject = data => {

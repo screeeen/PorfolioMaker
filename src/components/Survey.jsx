@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import './style.css'
-import Title from './Title'
-import Info from './Info'
-import Picture from './Picture'
-import Capsule from './Capsule'
-import CapsuleTwoColumn from './CapsuleTwoColumn'
-import VideoClip from './VideoClip'
+
+import ProfileCard from './ProfileCard'
+import ProfileForm from './ProfileForm'
+// import MyForm from './MyForm'
 
 const Survey = ({addInfo,data}) => {
 
@@ -41,7 +39,9 @@ const Survey = ({addInfo,data}) => {
 
   return (
     <div className="container-survey">
-      <div className="two-col">
+      <ProfileForm  addInfo={addInfo}/>
+      {/* <MyForm  addInfo={addInfo}/> */}
+      {/* <div className="two-col">
         <div className="flex-column">
           <form onSubmit={handleSubmit}>
             <label>
@@ -49,10 +49,8 @@ const Survey = ({addInfo,data}) => {
             </label>
             <input type="text" name='name' value={profile.name} onChange={handleChange} />
             <br />
-
             <p>Your Best Photo:</p>
             <input type="file" />
-
             <br />
             <label>
               <p>What do you do?</p>
@@ -79,34 +77,10 @@ const Survey = ({addInfo,data}) => {
             <button type="submit" value="Done with the profile part" />
           </form>
         </div>
-        <div className="container-survey">
-          <p>mockup</p>
-          <hr></hr>
-          <section id={profile.idTitle}>
-            <p>{profile.name}</p>
-            <p>{profile.profession}</p>
-            <p>{profile.description}</p>
-            <p>{profile.fruits}</p>
-
-            <Title title={profile.title} />
-            <Picture picture={profile.picture} />
-            <Info projectInfo={profile.text} />
-
-            <CapsuleTwoColumn subtitle={profile.subtitleTarget} text={profile.textTarget} subtitle2={profile.subtitleScope} text2={profile.textScope} />
-            <Picture picture={profile.picture2} />
-
-            <Capsule subtitle={profile.subtitleChallenge} text={profile.textChallenge} />
-            <Capsule subtitle={profile.subtitleProcess} text={profile.textProcess} />
-            <VideoClip videoURL={profile.clip1} />
-
-            <Capsule subtitle={profile.subtitleValidation} text={profile.textValidation} />
-            <Capsule subtitle={profile.subtitleLearnings} text={profile.textLearnings} />
-
-            <VideoClip videoURL={profile.clip2} />
-          </section>
-        </div>
+        <ProfileCard profile ={profile} />
+       
+        </div> */}
       </div>
-    </div>
   )
 
 }

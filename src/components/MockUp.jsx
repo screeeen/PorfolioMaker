@@ -20,7 +20,7 @@ function MockUp(props) {
       {data &&
         <>
           <p>name: {data.profile.name}</p>
-          <p>{data.profile.professions}</p>
+          <p>{data.profile.profession}</p>
           <p>{data.profile.description}</p>
           <p>my fruit {data.profile.fruits}</p>
           <ProjectCard data={data} />

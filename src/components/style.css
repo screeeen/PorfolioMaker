@@ -23,7 +23,7 @@ monospace;
     flex-flow: row wrap;
     object-fit: contain;
     box-sizing: border-box;
-    padding: 54px;
+    padding: 24px;
     font-family: 'IBM Plex Mono';
     color: rgb(22, 36, 36);
     font-weight: 400;
@@ -33,7 +33,7 @@ monospace;
 }
 
 .container-survey {
-    width: 80%;
+    width: 90%;
     margin: auto;
     font-family: 'IBM Plex Mono';
     color: rgb(22, 36, 36);

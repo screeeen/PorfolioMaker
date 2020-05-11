@@ -1,17 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import './style.css'
 import ProjectCard from './ProjectCard'
+import Thumb from './Thumb'
 
 function MockUp(props) {
   const [data, setData] = useState(0);
 
   useEffect(() => {
-    console.log(props.data);
     setData(props.data);
-  }, []);
-
-
-
+    console.log(props.data);
+  }, [props]);
 
   return (
     <div className="container-survey">
@@ -19,6 +17,7 @@ function MockUp(props) {
       <hr />
       {data &&
         <>
+          <Thumb file={data.profile.file} />
           <p>name: {data.profile.name}</p>
           <p>{data.profile.profession}</p>
           <p>{data.profile.description}</p>

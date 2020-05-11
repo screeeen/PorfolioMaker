@@ -18,6 +18,7 @@ const App = () => {
     profile: {
       name: '',
       profession: '',
+      file: null,
       description: '',
       picture: '',
       fruits: ''
@@ -25,17 +26,21 @@ const App = () => {
     projects: []
   };
 
-  const [data, setData] = useState(window.localStorage.getItem('data') || initialSchema);
 
-
+  const [data, setData] = useState(JSON.parse (window.localStorage.getItem('data')));
 
   useEffect(() => {
+    // console.log(JSON.parse(localStorage.getItem('data')));
+    console.log('state data', data);
+    window.localStorage.setItem('data', JSON.stringify(data))
+     
     // window.localStorage.getItem('data') && setData(JSON.parse(window.localStorage.getItem('data');
-  })
+  },[data]);
 
   const addInfo = profile => {
     console.log('add profi', profile);
-    setData({ ...data, profile });
+    setData({ ...data, profile })
+    
   }
 
   const addProject = data => {
@@ -71,17 +76,14 @@ const App = () => {
             <li>
               <Link to="/project">Project</Link>
             </li>
-            <li>
-              <Link to="/mockup">Preview</Link>
-            </li>
           </ul>
         </nav>
         <Switch>
           <Route exact path="/survey" component={() => <Survey addInfo={addInfo} data={data} />} />
           <Route exact path="/project" component={() => <ProjectSurvey addProject={addProject} data={data} />} />
-          <Route exact path="/mockup" component={() => <MockUp addInfo={addInfo} data={data} />} />
         </Switch>
         {/* <Redirect to="/survey" /> */}
+        < MockUp file={data} />
       </Router>
     </div>
   );

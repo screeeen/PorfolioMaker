@@ -1,9 +1,9 @@
 import React from 'react'
 import { Formik } from 'formik'
 import { withRouter } from "react-router-dom";
-import { Form, Input, Button } from './Styles.jsx'
-import Thumb from './Thumb'
-import { upload } from '../services/GetPicURL'
+import { Form, Input, Button } from '../Styles.jsx'
+import Thumb from '../UI/Thumb'
+import { upload } from '../../services/GetPicURL'
 
 const Survey = (props) => {
   const { name, profession, file, description, fruit } = props.data.profile;
@@ -43,8 +43,6 @@ const Survey = (props) => {
             <Input name="name" type="text" placeholder="Write your name..." value={values.name} onChange={handleChange} onBlur={handleBlur} />
             <Input name="profession" type="profession" placeholder="Write your profession..." value={values.profession} onChange={handleChange} onBlur={handleBlur} />
             <Input name="picture" type="file" onChange={event => setFieldValue("file", event.currentTarget.files[0])} />
-            {console.log(typeof file)}
-
             {typeof file === 'string' && <img src={file} alt=''/>}
             {typeof file === 'object' && <Thumb file={values.file} />}
             <Input as="textarea" name="description" placeholder="Describe your skills" value={values.description} onChange={handleChange} onBlur={handleBlur} />

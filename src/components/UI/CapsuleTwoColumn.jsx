@@ -1,6 +1,6 @@
 import React from 'react'
 import './style.css'
-import Subtitle from './Subtitle'
+import Subtitle from '../forms/Subtitle'
 import Info from './Info'
 // import Capsule from './Capsule'
 

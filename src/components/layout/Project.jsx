@@ -1,12 +1,10 @@
 import React, { useEffect,useState } from 'react'
-
-import './style.css'
-import Title from './Title'
+import Title from '../UI/Title'
 import Info from './Info'
 import Picture from './Picture'
 import Capsule from './Capsule'
 import CapsuleTwoColumn from './CapsuleTwoColumn'
-import VideoClip from './VideoClip'
+import VideoClip from './forms/VideoClip'
 
 
 const Project = props => {

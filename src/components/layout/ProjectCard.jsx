@@ -1,10 +1,10 @@
 import React from 'react';
-import Title from './Title'
-import Info from './Info'
-import Picture from './Picture'
-import Capsule from './Capsule'
-import CapsuleTwoColumn from './CapsuleTwoColumn'
-import VideoClip from './VideoClip'
+import Title from '../UI/Title'
+import Info from '../UI/Info'
+import Picture from './UI/Picture'
+import Capsule from '../UI/Capsule'
+import CapsuleTwoColumn from '../UI/CapsuleTwoColumn'
+import VideoClip from './forms/VideoClip'
 
 
 

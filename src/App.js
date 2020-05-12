@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import { getBase64 } from './services/utils'
 
 import {
   BrowserRouter as Router,
@@ -8,10 +7,9 @@ import {
   Link,
 } from "react-router-dom";
 
-import Survey from './components/Survey';
-import MockUp from './components/MockUp';
-import ProjectSurvey from './components/ProjectSurvey';
-import './App.css'
+import Survey from './components/forms/Survey';
+import ProjectSurvey from './components/forms/ProjectSurvey';
+import MockUp from './components/layout/MockUp';
 
 const App = () => {
 
@@ -27,22 +25,13 @@ const App = () => {
     projects: []
   };
 
-  const [data, setData] = useState( JSON.parse(localStorage.getItem('data')) || initialSchema);
+  const [data, setData] = useState( JSON.parse(sessionStorage.getItem('data')) || initialSchema);
 
   useEffect(() => {
-    localStorage.setItem('data', JSON.stringify(data))
+    sessionStorage.setItem('data', JSON.stringify(data))
   }, [data]);
 
   const addInfo = profile => {
-
-    console.debug("data aftr", data);
-    // const file = getBase64(profile.file)
-    //   .then(base64 => {
-    //     localStorage["fileBase64"] = base64;
-    //     profile.file = base64;
-    //     console.log(profile)
-    //     console.log("file stored", base64);
-    //   });
     setData({ ...data, profile })
 
   }

@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import './style.css'
-import ProjectCard from './ProjectCard'
-import Thumb from './Thumb'
+import '../style.css'
 
 function MockUp(props) {
   
@@ -10,7 +8,6 @@ function MockUp(props) {
   useEffect(() => {
     setData(props.data);
   }, [props]);
-  console.log(data);
   
   return (
     <div className="container-survey">

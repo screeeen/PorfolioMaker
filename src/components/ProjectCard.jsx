@@ -9,9 +9,6 @@ import VideoClip from './VideoClip'
 
 
 const ProjectCard = ({data}) => {
-  console.log('project data',data);
-
-
   return (
     data.projects.map((project,i) => {
       const { projectName, subtitle, challengeDescription } = project

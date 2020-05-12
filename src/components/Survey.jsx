@@ -1,26 +1,32 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { Formik } from 'formik'
 import { withRouter } from "react-router-dom";
 import { Form, Input, Button } from './Styles.jsx'
 import Thumb from './Thumb'
+import { upload } from '../services/GetPicURL'
 
-const Survey = props => {
+const Survey = (props) => {
+  const { name, profession, file, description, fruit } = props.data.profile;
+  const { addInfo, history } = props;
 
   return (
     <Formik
       initialValues={{
-        name: '',
-        profession: '',
-        file: null,
-        fruits: '',
+        name: name,
+        profession: profession,
+        file: file,
+        description: description,
+        fruit: fruit,
       }}
       validate={values => {
-        console.log(values.file);
       }}
       onSubmit={(values) => {
-        console.log(values);
-        props.addInfo(values);
-        props.history.push('/');
+        upload(values.file)
+          .then(ur => {
+            values.file = ur
+            addInfo(values);
+            history.push('/');
+          })
       }}
     >
 
@@ -34,13 +40,15 @@ const Survey = props => {
         handleSubmit
       }) => (
           <Form onSubmit={handleSubmit}>
-            <Input type="text" name="name" placeholder="Write your name..." value={values.name} onChange={handleChange} onBlur={handleBlur} />
-            <Input type="profession" name="profession" placeholder="Write your profession..." value={values.profession} onChange={handleChange} onBlur={handleBlur} />
-            <Input type="file" name='picture' onChange={event => setFieldValue("file", event.currentTarget.files[0])} />
-            <Thumb file={values.file} />
+            <Input name="name" type="text" placeholder="Write your name..." value={values.name} onChange={handleChange} onBlur={handleBlur} />
+            <Input name="profession" type="profession" placeholder="Write your profession..." value={values.profession} onChange={handleChange} onBlur={handleBlur} />
+            <Input name="picture" type="file" onChange={event => setFieldValue("file", event.currentTarget.files[0])} />
+            {console.log(typeof file)}
+
+            {typeof file === 'string' && <img src={file} alt=''/>}
+            {typeof file === 'object' && <Thumb file={values.file} />}
             <Input as="textarea" name="description" placeholder="Describe your skills" value={values.description} onChange={handleChange} onBlur={handleBlur} />
             <Button type="submit">Submit</Button>
-
           </Form>
         )}
     </Formik>

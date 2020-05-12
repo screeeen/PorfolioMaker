@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { getBase64 } from './services/utils'
 
 import {
   BrowserRouter as Router,
@@ -21,27 +22,32 @@ const App = () => {
       file: null,
       description: '',
       picture: '',
-      fruits: ''
+      fruit: ''
     },
     projects: []
   };
 
-
-  const [data, setData] = useState(JSON.parse (window.localStorage.getItem('data')));
+  const [data, setData] = useState( JSON.parse(localStorage.getItem('data')) || initialSchema);
 
   useEffect(() => {
-    // console.log(JSON.parse(localStorage.getItem('data')));
-    console.log('state data', data);
-    window.localStorage.setItem('data', JSON.stringify(data))
-     
-    // window.localStorage.getItem('data') && setData(JSON.parse(window.localStorage.getItem('data');
-  },[data]);
+    localStorage.setItem('data', JSON.stringify(data))
+  }, [data]);
 
   const addInfo = profile => {
-    console.log('add profi', profile);
+
+    console.debug("data aftr", data);
+    // const file = getBase64(profile.file)
+    //   .then(base64 => {
+    //     localStorage["fileBase64"] = base64;
+    //     profile.file = base64;
+    //     console.log(profile)
+    //     console.log("file stored", base64);
+    //   });
     setData({ ...data, profile })
-    
+
   }
+
+
 
   const addProject = data => {
     // setdata(data => {
@@ -81,13 +87,11 @@ const App = () => {
         <Switch>
           <Route exact path="/survey" component={() => <Survey addInfo={addInfo} data={data} />} />
           <Route exact path="/project" component={() => <ProjectSurvey addProject={addProject} data={data} />} />
+          < MockUp data={data.profile} />
         </Switch>
-        {/* <Redirect to="/survey" /> */}
-        < MockUp file={data} />
       </Router>
     </div>
   );
 }
-
 
 export default App

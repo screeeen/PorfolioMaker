@@ -13,9 +13,7 @@ const Project = props => {
   const [data, setData] = useState(props.data);
 
   useEffect(() => {
-    setData(props);
-    console.log(data,'project page data');
-    
+    setData(props);    
   }, []);
   
 

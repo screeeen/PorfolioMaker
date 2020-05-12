@@ -12,3 +12,14 @@ export const  handleChange = (project,setProject,event) => {
   // setSubtitle(subtitle);
   // setChallenge(challengeDescription);
 }
+
+
+export const getBase64 = (file) => {
+  console.log(file.type);
+  return new Promise((resolve,reject) => {
+     const reader = new FileReader();
+     reader.onload = () => resolve(reader.result);
+     reader.onerror = error => reject(error);
+     reader.readAsDataURL(file);
+  });
+}

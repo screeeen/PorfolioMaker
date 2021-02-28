@@ -33,25 +33,27 @@ const App = () => {
 
   const addInfo = profile => {
     setData({ ...data, profile })
-
   }
 
 
 
-  const addProject = data => {
-    // setdata(data => {
-    //   const { projectName, subtitle, challengeDescription } = data;
-    //   const projectTemplate = {
-    //     projectName,
-    //     subtitle,
-    //     challengeDescription
-    //   }
-    //   const projects = [...data.projects, projectTemplate];
-    //   console.log(...data.projects);
-    //   console.log(data);
-    //   return {
-    //     projects,
-    //   };
+  const addProject = project => {
+    // setdata(project => {
+      const { projectName, subtitle, challengeDescription } = project;
+      
+      const projectTemplate = {
+        projectName,
+        subtitle,
+        challengeDescription
+      }
+      console.log(project,projectName, subtitle, challengeDescription);
+
+      const projects = [...data.projects, projectTemplate];
+      console.log(...data.projects);
+      console.log(data);
+      return {
+        projects,
+      };
     // });
   };
 
@@ -75,7 +77,7 @@ const App = () => {
         </nav>
         <Switch>
           <Route exact path="/survey" component={() => <Survey addInfo={addInfo} data={data} />} />
-          <Route exact path="/project" component={() => <ProjectSurvey addProject={addProject} data={data} />} />
+          <Route exact path="/project" component={() => <ProjectSurvey addProject={addProject} data={data.projects} />} />
           < MockUp data={data.profile} />
         </Switch>
       </Router>

@@ -6,26 +6,25 @@ import Thumb from '../UI/Thumb'
 import { upload } from '../../services/GetPicURL'
 
 const ProjectSurvey = (props) => {
-  console.log(props)
 
   const { projects } = props.data;
-  const { file,addProject, history } = props;
-  console.log(projects)
+  const { addProject, history } = props;
+  const currentProject = projects[projects.length-1];
+  const {projectName,subtitle,file,challengeDescription} = currentProject;
+  console.log('projects',projects)
 
   return (
     <Formik
       initialValues={{
-        projectName: '',
-        subtitle: '',
-        file: null,
-        challengeDescription: '',
+        projectName,
+        subtitle,
+        file,
+        challengeDescription,
       }}
       onSubmit={(values) => {
-        console.log(values)
         upload(values.file)
           .then(ur => {
             values.file = ur
-            console.log('values',values)
             addProject(values);
             history.push('/');
           })

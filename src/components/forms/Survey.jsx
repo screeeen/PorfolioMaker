@@ -12,10 +12,10 @@ const Survey = (props) => {
   return (
     <Formik
       initialValues={{
-        name: name,
-        profession: profession,
-        file: file,
-        description: description,
+        name,
+        profession,
+        file,
+        description,
       }}
       validate={values => {
       }}

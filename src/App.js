@@ -21,14 +21,20 @@ const App = () => {
       description: '',
       picture: '',
     },
-    projects: []
+    projects: [{
+      projectName : '',
+      subtitle: '',
+      file: null,
+      challengeDescription: ''
+    }]
   };
 
   const [data, setData] = useState( JSON.parse(sessionStorage.getItem('data')) || initialSchema);
 
   useEffect(() => {
+    console.log('data changed')
     sessionStorage.setItem('data', JSON.stringify(data))
-  }, [data]);
+  }, [data,data.projects]);
 
   const addInfo = profile => {
     setData({ ...data, profile })
@@ -36,28 +42,10 @@ const App = () => {
   }
 
   const addProject = projectData => {
-    console.log('fuck',projectData);
     const newData = data;
-    console.log('fuck',newData);
     newData.projects.push(projectData);
-
-    console.log('newData',newData)
     setData(newData);
     console.log('despues',data);
-    // setdata(data => {
-    //   const { projectName, subtitle, challengeDescription } = data;
-    //   const projectTemplate = {
-    //     projectName,
-    //     subtitle,
-    //     challengeDescription
-    //   }
-    //   const projects = [...data.projects, projectTemplate];
-    //   console.log(...data.projects);
-    //   console.log(data);
-    //   return {
-    //     projects,
-    //   };
-    // });
   };
 
   return (
@@ -82,7 +70,7 @@ const App = () => {
         <Switch>
           <Route exact path="/survey" component={() => <Survey addInfo={addInfo} data={data} />} />
           <Route exact path="/project" component={() => <ProjectSurvey addProject={addProject} data={data} />} />
-          < MockUp data={data.profile} />
+          < MockUp data={data} />
         </Switch>
       </Router>
     </div>

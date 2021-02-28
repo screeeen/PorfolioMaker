@@ -10,12 +10,11 @@ export const Form = styled.form`
 `;
 
 export const Input = styled.input`
-  width: 300px;
-  height: 35px;
-  border: 1px solid #ccc;
-  background-color: #fff;
-  margin-bottom: 1em;
-  padding: .5em;
+width: 300px;
+height: 35px;
+border: none;
+border-bottom: 1px solid #ccc;
+margin-bottom: 1em;
 `;
 
 export const Button = styled.button`

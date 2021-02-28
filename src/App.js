@@ -20,7 +20,6 @@ const App = () => {
       file: null,
       description: '',
       picture: '',
-      fruit: ''
     },
     projects: []
   };
@@ -36,9 +35,15 @@ const App = () => {
 
   }
 
+  const addProject = projectData => {
+    console.log('fuck',projectData);
+    const newData = data;
+    console.log('fuck',newData);
+    newData.projects.push(projectData);
 
-
-  const addProject = data => {
+    console.log('newData',newData)
+    setData(newData);
+    console.log('despues',data);
     // setdata(data => {
     //   const { projectName, subtitle, challengeDescription } = data;
     //   const projectTemplate = {
@@ -60,7 +65,8 @@ const App = () => {
       <Router>
         <nav>
           <ul>
-            <p>Welcome to the automatic porfolio. Prepare your pictures, files and texts, fill the forms and voilá.</p>
+            <h1>Welcome to the automatic porfolio.</h1>
+             <p>Prepare your pictures, files and texts, fill the forms and voilá.</p>
             {/* </div> */}
             <li>
               <Link to="/">Home</Link>

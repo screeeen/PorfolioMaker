@@ -19,7 +19,6 @@ function MockUp(props) {
           <p>name: {data.name} </p>
           <p>{data.profession}</p>
           <p>{data.description}</p>
-          <p>my fruit {data.fruit}</p>
           {/* <ProjectCard data={data} /> */}
         </>
       }

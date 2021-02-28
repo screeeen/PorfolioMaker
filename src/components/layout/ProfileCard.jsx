@@ -17,7 +17,6 @@ const ProfileCard = ({profile}) => {
         <p>{profile.name}</p>
         <p>{profile.profession}</p>
         <p>{profile.description}</p>
-        <p>{profile.fruits}</p>
 
         <Title title={profile.title} />
         <Title title={profile.profession} />

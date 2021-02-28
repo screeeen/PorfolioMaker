@@ -1,14 +1,14 @@
 import React from 'react'
+import { Form, Input, Button } from '../Styles.jsx'
 import { Formik } from 'formik'
 import { withRouter } from "react-router-dom";
-import { Form, Input, Button } from '../Styles.jsx'
 import Thumb from '../UI/Thumb'
 import { upload } from '../../services/GetPicURL'
 
 const Survey = (props) => {
-  const { name, profession, file, description, fruit } = props.data.profile;
+  const { name, profession, file, description } = props.data.profile;
   const { addInfo, history } = props;
-
+  console.log(props);
   return (
     <Formik
       initialValues={{
@@ -16,7 +16,6 @@ const Survey = (props) => {
         profession: profession,
         file: file,
         description: description,
-        fruit: fruit,
       }}
       validate={values => {
       }}

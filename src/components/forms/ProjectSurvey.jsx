@@ -11,7 +11,6 @@ const ProjectSurvey = (props) => {
   const { addProject, history } = props;
   const currentProject = projects[projects.length-1];
   const {projectName,subtitle,file,challengeDescription} = currentProject;
-  console.log('projects',projects)
 
   return (
     <Formik

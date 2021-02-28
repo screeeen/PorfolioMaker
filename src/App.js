@@ -38,7 +38,6 @@ const App = () => {
 
   const addInfo = profile => {
     setData({ ...data, profile })
-
   }
 
   const addProject = projectData => {

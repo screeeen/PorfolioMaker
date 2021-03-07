@@ -10,7 +10,7 @@ import {
 import Survey from './components/forms/Survey';
 import ProjectSurvey from './components/forms/ProjectSurvey';
 import MockUp from './components/layout/MockUp';
-
+import { Container } from './components/Styles'
 const App = () => {
 
   const initialSchema = {
@@ -48,31 +48,21 @@ const App = () => {
   };
 
   return (
-    <div className="container-survey">
+    <Container>
       <Router>
-        <nav>
-          <ul>
+
             <h1>Welcome to the automatic porfolio.</h1>
              <p>Prepare your pictures, files and texts, fill the forms and voilá.</p>
-            {/* </div> */}
-            <li>
               <Link to="/">Home</Link>
-            </li>
-            <li>
               <Link to="/survey">Profile</Link>
-            </li>
-            <li>
               <Link to="/project">Project</Link>
-            </li>
-          </ul>
-        </nav>
         <Switch>
           <Route exact path="/survey" component={() => <Survey addInfo={addInfo} data={data} />} />
           <Route exact path="/project" component={() => <ProjectSurvey addProject={addProject} data={data} />} />
           < MockUp data={data} />
         </Switch>
       </Router>
-    </div>
+    </Container>
   );
 }
 

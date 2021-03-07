@@ -1,12 +1,36 @@
 import styled from 'styled-components';
 
+export const Container = styled.div`
+	width: 90%;
+	margin: auto;
+	color: rgb(22, 36, 36);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+@media screen and (min-width: 600px) {
+		width: 400px;
+}
+`;
+
+export const Image = styled.div`
+    width: 90px;
+    border: 2px solid black; 
+    width: 100%;
+    object-fit: contain;
+    box-sizing: border-box;
+    padding: 10px 0;
+`;
+
+
 // Forms, inputs, buttons
 
 export const Form = styled.form`
-  width: 300px;
+  width: 400px;
+  margin: auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
 `;
 
 export const Input = styled.input`

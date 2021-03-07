@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import '../style.css'
-
+import { Image } from '../Styles'
 function MockUp(props) {
   
   const [data, setData] = useState(props.data);
@@ -16,24 +15,24 @@ function MockUp(props) {
   const renderProjects =()=> {
     console.log('here',data)
    return projects.length && projects.map((project)=>(
-      <section key={project.projectName + project.subtitle}>
-          {project.file && <img src={project.file} alt='' />}
+      <div key={project.projectName + project.subtitle}>
+          {project.file && <Image src={project.file} alt='' />}
           <p>project name: {project.projectName} </p>
           <p>project subtitle: {project.subtitle}</p>
           <p>project challenge: {project.challengeDescription}</p>
-      </section>
+      </div>
     ))
   }
   
   return (
-    <div className="container-survey">
+    <>
       <p>preview</p>
-          {profile.file && <img src={profile.file} alt='' />}
+          {profile.file && <Image src={profile.file} alt='' />}
           <p>name: {profile.name} </p>
           <p>{profile.profession}</p>
           <p>{profile.description}</p>
           {renderProjects()}
-    </div>
+    </>
   );
 }
 

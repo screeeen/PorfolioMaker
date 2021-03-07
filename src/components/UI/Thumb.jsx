@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import { Image } from '../Styles'
 
 const Thumb = ({ file }) => {
   const [loading, setLoading] = useState(false)
@@ -22,9 +23,8 @@ const Thumb = ({ file }) => {
     <>
       {file ? (
         loading ? (<p>loading...</p>) :
-          (<img src={thumb}
+          (<Image src={thumb}
             alt={file.name}
-            className="img-thumbnail mt-2"
             height={200}
             width={200} />)
       ) : null

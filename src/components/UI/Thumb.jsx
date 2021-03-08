@@ -23,7 +23,7 @@ const Thumb = ({ file }) => {
     <>
       {file ? (
         loading ? (<p>loading...</p>) :
-          (<Image src={thumb}
+          (<img src={thumb}
             alt={file.name}
             height={200}
             width={200} />)

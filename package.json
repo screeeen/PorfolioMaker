@@ -40,5 +40,8 @@
             "last 1 safari version"
         ]
     },
-    "devDependencies": {}
+    "devDependencies": {
+        "babel-core": "^6.26.3",
+        "babel-preset-react": "^6.24.1"
+    }
 }

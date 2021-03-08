@@ -13,9 +13,7 @@ export const Container = styled.div`
 }
 `;
 
-export const Image = styled.div`
-    width: 90px;
-    border: 2px solid black; 
+export const Image = styled.img`
     width: 100%;
     object-fit: contain;
     box-sizing: border-box;
